@@ -130,7 +130,7 @@ namespace YARG.Gameplay.Player
 
             for (var fret = GuitarAction.GreenFret; fret <= GuitarAction.OrangeFret; fret++)
             {
-                _fretArray.SetPressed((int) fret, Engine.IsFretHeld(fret));
+                _fretArray.SetPressed((int) fret + 1, Engine.IsFretHeld(fret));
             }
         }
 
@@ -172,11 +172,11 @@ namespace YARG.Gameplay.Player
 
                 if (note.Fret != 0)
                 {
-                    _fretArray.PlayHitAnimation(note.Fret - 1);
+                    _fretArray.PlayHitAnimation(note.Fret);
                 }
                 else
                 {
-                    _fretArray.PlayOpenHitAnimation();
+                    _fretArray.PlayHitAnimation(note.Fret);
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace YARG.Gameplay.Player
 
                 if (note.Fret != 0)
                 {
-                    _fretArray.SetSustained(note.Fret - 1, true);
+                    _fretArray.SetSustained(note.Fret, true);
                 }
             }
         }
@@ -234,7 +234,7 @@ namespace YARG.Gameplay.Player
 
                 if (note.Fret != 0)
                 {
-                    _fretArray.SetSustained(note.Fret - 1, false);
+                    _fretArray.SetSustained(note.Fret, false);
                 }
             }
 

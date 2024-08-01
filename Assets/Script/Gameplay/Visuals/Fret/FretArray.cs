@@ -84,7 +84,7 @@ namespace YARG.Gameplay.Visuals
         {
             for (int i = 0; i < _frets.Count; i++)
             {
-                int index = i + 1;
+                int index = i;
                 if (DontFlipColorsLeftyFlip && leftyFlip)
                 {
                     index = _frets.Count - index + 1;

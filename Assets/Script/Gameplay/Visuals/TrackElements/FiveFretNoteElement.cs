@@ -56,7 +56,7 @@ namespace YARG.Gameplay.Visuals
                 // Deal with non-open notes
 
                 // Set the position
-                transform.localPosition = new Vector3(GetElementX(NoteRef.Fret, 5), 0f, 0f) * LeftyFlipMultiplier;
+                transform.localPosition = new Vector3(GetElementX(NoteRef.Fret, 6) + 0.33f, 0f, 0f) * LeftyFlipMultiplier;
 
                 // Get which note model to use
                 NoteGroup = NoteRef.Type switch
@@ -74,18 +74,18 @@ namespace YARG.Gameplay.Visuals
                 // Deal with open notes
 
                 // Set the position
-                transform.localPosition = Vector3.zero;
+                transform.localPosition = new Vector3(GetElementX(NoteRef.Fret, 6) + 0.33f, 0f, 0f) * LeftyFlipMultiplier;
 
                 // Get which note model to use
                 NoteGroup = NoteRef.Type switch
                 {
-                    GuitarNoteType.Strum => noteGroups[(int) NoteType.Open],
-                    GuitarNoteType.Hopo or
-                    GuitarNoteType.Tap   => noteGroups[(int) NoteType.OpenHOPO],
+                    GuitarNoteType.Strum => noteGroups[(int) NoteType.Strum],
+                    GuitarNoteType.Hopo  => noteGroups[(int) NoteType.HOPO],
+                    GuitarNoteType.Tap   => noteGroups[(int) NoteType.Tap],
                     _ => throw new ArgumentOutOfRangeException(nameof(NoteRef.Type))
                 };
 
-                _sustainLine = _openSustainLine;
+                _sustainLine = _normalSustainLine;
             }
 
             // Show and set material properties
